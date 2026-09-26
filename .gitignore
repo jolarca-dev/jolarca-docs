@@ -1,0 +1,49 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# jolarca-docs — .gitignore
+# ──────────────────────────────────────────────────────────────────────────────
+# The first block is mandated verbatim by
+# jolarca-control/policy/repo-defaults.yml → data_handling.required_gitignore_patterns.
+# Do not remove entries from it: scripts/validate_repos.py checks for them.
+#
+# This repository holds documentation and generated indexes only. It must never
+# contain secrets, credentials, Terraform state, or key material — see ADR
+# DOC-0002 (public abstraction cap). No .env file of any kind belongs here.
+# ──────────────────────────────────────────────────────────────────────────────
+
+# ── Mandated by repo-defaults.yml (do not edit) ────────────────────────────────
+*.pem
+*.key
+*.p12
+secrets.json
+credentials.json
+.env
+.env.*
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# ── Python ─────────────────────────────────────────────────────────────────────
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# ── IDE / editor ───────────────────────────────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+.DS_Store
+
+# ── Node (not used; ignored defensively — see spec §9 non-goals) ───────────────
+node_modules/
+
+# ── Local working state ────────────────────────────────────────────────────────
+# generate.py writes here when sibling clones are unavailable, so a partial run
+# can be inspected without risking a commit.
+.tmp/
