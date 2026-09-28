@@ -1,0 +1,14 @@
+# CODEOWNERS — jolarca-docs
+#
+# ROUTING ONLY — NOT AN ENFORCED GATE.
+#
+# require_code_owner_reviews is inert fleet-wide: jolarca-dev has ZERO teams
+# (jolarca-control/docs/drift-findings.md D-10/D-20), so no CODEOWNERS entry can
+# actually block a merge. This file documents intended reviewers and routes
+# notifications; it is not a security control. Do not rely on it as one.
+#
+# ADR-0004 R4: name jolarca-dev owners only — NEVER a mission-org (jol-*) team.
+# The org owner is the sole admin in the single-operator era (repo-defaults.yml
+# organization_baseline.allowed_admins).
+
+* @JourneyOfLife

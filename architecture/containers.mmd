@@ -1,0 +1,42 @@
+%% C4 Level 2 - Container (abstraction-capped; roles only, no versions or hosts)
+%% Status: designed unless noted. See system-description/03-software.md.
+flowchart TB
+    subgraph edge["Public edge"]
+        web["Storefront / Presentation"]
+    end
+
+    subgraph appcore["Application core"]
+        api["Domain and Application Services"]
+        pay["Payment Boundary Service"]
+        idsvc["Identity and Access"]
+        consent["Consent Registry"]
+    end
+
+    subgraph dataroles["Data roles"]
+        db[("Primary Datastore")]
+        cache[("Cache")]
+        search[("Search Index")]
+        obj[("Object Storage")]
+    end
+
+    subgraph govroles["Governance and platform services"]
+        ctl["Control Plane"]
+        obs["Observability (planned)"]
+        analytics["Analytics Platform (pseudonymous)"]
+    end
+
+    processor["Payment Processor - external"]
+
+    web --> api
+    api --> idsvc
+    api --> pay
+    api --> db
+    api --> cache
+    api --> search
+    api --> obj
+    consent --> db
+    idsvc --> db
+    pay --> processor
+    api --> analytics
+    ctl -.-> appcore
+    obs -.-> appcore

@@ -1,0 +1,32 @@
+Copyright (c) 2026 Journey of Life. All rights reserved.
+
+This repository is the PUBLIC compliance-documentation hub of the Journey of
+Life marketplace (jolarca-dev). It is published for transparency: it indexes
+architecture decisions, describes the system for SOC 2 purposes, and points at
+upstream evidence by reference and cryptographic hash.
+
+Publication is deliberate; a licence to redistribute is not.
+
+PERMITTED USE. You may read this repository, cite it, and use it to understand
+the compliance posture of the jolarca-dev fleet.
+
+RESTRICTIONS. No part of this repository may be copied, mirrored, republished,
+sold, or incorporated into a derivative work, dataset, or training corpus
+without prior written authorization from Journey of Life, except for brief
+quotations with attribution.
+
+CONTENT ABSTRACTION CAP. Everything published here is abstraction-capped by
+design (ADR DOC-0002): it describes component roles, data categories, trust
+boundaries, and control status only. It contains no hostnames, network
+addresses, ports, database identifiers, key material, or cardholder-data-environment
+segmentation detail. Those live in private upstream repositories and are
+referenced here by pointer and SHA-256 digest only. If you believe you have
+found a control-plane identifier in this repository, treat it as a security
+incident and report it under SECURITY.md — do not open a public issue.
+
+UPSTREAM OWNERSHIP. This repository owns no fact that another repository owns.
+Authoritative architecture, network policy, DPIAs, and the asset inventory
+remain in their originating repositories; this hub indexes and verifies them,
+it does not supersede them.
+
+Trademarks, logos, and the Journey of Life name are not licensed by this notice.

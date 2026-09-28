@@ -1,0 +1,22 @@
+%% Data flow by CATEGORY (never by table). Abstraction-capped.
+%% The DPIAs cite this canonical category-level flow instead of embedding their own.
+%% Status: designed. See system-description/06-data.md.
+flowchart LR
+    user([User])
+
+    subgraph platform["Platform boundary"]
+        app["Application"]
+        payb["Payment Boundary"]
+        cons["Consent Registry"]
+    end
+
+    wh["Analytics Warehouse"]
+    proc["Payment Processor - carve-out"]
+
+    user -->|"identity and contact category"| app
+    user -->|"consent category"| cons
+    user -->|"card data: direct to processor, never platform"| proc
+    app -->|"order and transaction category"| payb
+    payb -->|"payment reference / token category"| proc
+    app -->|"pseudonymized category at ingestion boundary"| wh
+    cons -->|"consent proof category (append-only)"| app

@@ -1,0 +1,20 @@
+%% C4 Level 1 — System Context (abstraction-capped; roles only)
+%% Status: designed. See system-description/01-scope-and-boundaries.md.
+flowchart LR
+    customer([Customer])
+    merchant([Merchant / Seller])
+    operator([Operator])
+    assessor([External Assessor])
+
+    subgraph platform["Marketplace Platform - system boundary"]
+        direction TB
+        core["Core platform (see containers.mmd)"]
+    end
+
+    processor["Payment Processor - carve-out subservice"]
+
+    customer -->|"browse and order"| platform
+    merchant -->|"manage listings"| platform
+    operator -->|"administer"| platform
+    assessor -.->|"reviews description"| platform
+    platform -->|"payment via boundary only"| processor

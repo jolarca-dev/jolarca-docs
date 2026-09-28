@@ -167,7 +167,7 @@ rationale, not a lint rule nobody can explain.
 
 ### 3.3 Repository tree
 
-```
+```text
 jolarca-docs/
 ├── .github/
 │   ├── CODEOWNERS                 # names jolarca-dev — NOT mission-org (ADR-0004 R4)

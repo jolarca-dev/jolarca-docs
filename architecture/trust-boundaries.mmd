@@ -1,0 +1,28 @@
+%% Trust boundaries only - zero ports, hosts, or segment identifiers.
+%% The default-deny matrices live upstream and are cited, not reproduced.
+%% Status: designed. See system-description/01-scope-and-boundaries.md.
+flowchart TB
+    public["Public / Untrusted"]
+
+    subgraph b1["Boundary: public to edge"]
+        edge["Edge / Presentation"]
+    end
+
+    subgraph b2["Boundary: platform internal"]
+        app["Application / Domain"]
+        payb["Payment Boundary"]
+        data["Datastores"]
+    end
+
+    subgraph b3["Boundary: pseudonymization"]
+        wh["Analytics"]
+    end
+
+    ext["External: Payment Processor"]
+
+    public --> edge
+    edge --> app
+    app --> data
+    app --> payb
+    payb --> ext
+    app --> wh

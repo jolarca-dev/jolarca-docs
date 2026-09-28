@@ -1,0 +1,49 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# jolarca-docs — required status-check context: `lint`
+# ──────────────────────────────────────────────────────────────────────────────
+# The job MUST be named exactly `lint`: jolarca-control/repos/jolarca-docs.yml
+# declares `lint` as the required_status_checks context on `main`. Renaming it
+# silently unprotects the branch (design spec §5.1).
+#
+# This job runs `make check` = ruff + mypy + markdownlint + verify + test.
+# `verify` runs in AUTO mode here: the sibling fleet is NOT available in CI
+# (a public repo must never be given a PAT that reads private PCI-scope repos —
+# design spec §2 D2), so the sibling-dependent integrity steps SKIP LOUDLY and
+# the committed artifacts are checked for internal consistency instead. The
+# authoritative full evaluation is `make verify-strict`, run locally by the
+# operator before commit.
+#
+# Supply chain: only actions/checkout is used, pinned by commit SHA (reused from
+# the org ci-base.yml so the digest is already verified). No setup-python action:
+# ubuntu-latest provides python3 and Node/npx, keeping the action surface minimal.
+# ──────────────────────────────────────────────────────────────────────────────
+name: lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lint-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Install dependencies (single runtime dep + dev tooling)
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install "pyyaml==6.0.2" "ruff>=0.16" "mypy>=1.11" "pytest>=8.3" "types-pyyaml>=6.0"
+
+      - name: Run make check
+        run: make check

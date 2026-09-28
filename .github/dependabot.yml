@@ -1,0 +1,30 @@
+# Dependabot — jolarca-docs
+#
+# The runtime dependency surface is exactly one package (pyyaml; ADR DOC-0003)
+# plus dev tooling and GitHub Actions. Every bump is an auditable change
+# (SOC 2 CC7.1 / CC8.1, ISO 27001 A.8.8). Version updates are grouped so the
+# single-operator review queue stays small; security updates are never grouped.
+version: 2
+updates:
+  - package-ecosystem: pip
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "build(deps)"
+    groups:
+      python-dev:
+        patterns:
+          - "ruff"
+          - "mypy"
+          - "pytest"
+          - "types-pyyaml"
+
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "ci(deps)"

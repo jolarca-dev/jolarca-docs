@@ -1,0 +1,16 @@
+{
+  // markdownlint-cli2 run configuration: globs and ignores ONLY.
+  // Rule configuration stays single-sourced in .markdownlint.json (cli2 applies
+  // it automatically). tests/fixtures is ignored here because those are scanner
+  // test inputs, not published documentation — this is a LINTER scope choice and
+  // is unrelated to scripts/verify.py, whose deny-pattern scan honours the spec's
+  // "no path exclusions" rule and scans every committed file.
+  "globs": ["**/*.md"],
+  "ignores": [
+    ".venv/**",
+    "venv/**",
+    "node_modules/**",
+    ".tmp/**",
+    "tests/fixtures/**"
+  ]
+}

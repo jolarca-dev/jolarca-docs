@@ -1,0 +1,11 @@
+{
+  "comment": "jolarca-docs markdownlint config. Mirrors the jolarca-compliance convention. Disabled rules carry a documented reason; do not re-enable without updating CONTRIBUTING.md.",
+  "MD013": false,
+  "MD024": false,
+  "MD033": {
+    "allowed_elements": ["link", "PARTIAL"]
+  },
+  "MD034": false,
+  "MD041": false,
+  "MD060": false
+}
