@@ -38,6 +38,7 @@ collision arose in the first place.
 | `OBS-` | `jolarca-observability` | Observability stack |
 | `RUN-` | `jolarca-runbooks` | Operational runbooks |
 | `VEN-` | `jolarca-vendor` | Vendor management |
+| `HERMES-` | `jolarca-hermes-agents` | Hermes AI agent implementations |
 | `DOC-` | `jolarca-docs` | This repository |
 
 ### Deviation from the design spec
