@@ -13,7 +13,7 @@ keywords = ["soc2", "iso27001", "gdpr", "pci-dss", "adr", "governance", "documen
 # YAML parser and hand-rolling one is more risk than the dependency. Pinned so
 # Dependabot owns every bump as an auditable change.
 dependencies = [
-    "pyyaml==6.0.2",
+    "pyyaml==6.0.3",
 ]
 
 [project.optional-dependencies]
