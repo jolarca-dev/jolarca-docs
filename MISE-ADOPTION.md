@@ -29,3 +29,5 @@ No automatic hooks, environment-file loading, production credentials, deployment
 ## Installer provenance
 
 The smoke workflow pins mise-action to its reviewed commit and mise to 2026.10.25, verifies the extracted Linux x64 binary SHA-256, disables shared caching, and uses a read-only token on a hosted runner. The archive digest was checked against the release API before deriving the binary digest. This is integrity verification, not an independent publisher identity audit.
+
+The generated lockfile header omits the documentation URL to satisfy this repository's hostname policy. Tool artifact URLs and checksums are unchanged. After regenerating, remove that header URL again before running the repository checks.
